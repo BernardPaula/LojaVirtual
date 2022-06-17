@@ -1,5 +1,6 @@
 package com.bernardpaula.lojavirtual.domain;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -15,7 +16,8 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name= "cliente")
-public class Cliente {
+public class Cliente implements Serializable{
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -34,13 +36,13 @@ public class Cliente {
 	@Email
 	private String email;
 	
-	@Column(name="info_cartao_cred", unique=true)
+	@Column(name="info_cartao_cred" )
 	private String infoCartaoCred;
 	
-	@Column(name="info_envio", unique=true)
+	@Column(name="info_envio")
 	private String infoEnvio;
 	
-	@Column(name="saldo_conta", unique=true)
+	@Column(name="saldo_conta")
 	private float saldoConta;
 	
 	
@@ -48,6 +50,8 @@ public class Cliente {
 	public Cliente() {
 		
 	}
+
+	
 
 	public Cliente(Integer numCliente,
 			@NotEmpty(message = "Campo Obrigatório!") @Length(min = 1, max = 80, message = "O tamanho deve estar entre 1 e 80 caracteres!") String nomeCliente,
@@ -62,6 +66,8 @@ public class Cliente {
 		this.infoEnvio = infoEnvio;
 		this.saldoConta = saldoConta;
 	}
+
+
 
 	public Integer getNumCliente() {
 		return numCliente;

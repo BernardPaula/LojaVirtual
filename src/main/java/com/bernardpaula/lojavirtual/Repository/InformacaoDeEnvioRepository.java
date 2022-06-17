@@ -1,6 +1,10 @@
 package com.bernardpaula.lojavirtual.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.bernardpaula.lojavirtual.domain.InformacaoDeEnvio;
@@ -8,4 +12,7 @@ import com.bernardpaula.lojavirtual.domain.InformacaoDeEnvio;
 @Repository
 public interface InformacaoDeEnvioRepository extends JpaRepository<InformacaoDeEnvio, Integer>{
 
+	@Query(value = "SELECT * FROM informacao_de_envio WHERE tipo_envio LIKE %:pesquisa%", nativeQuery=true)
+	List<InformacaoDeEnvio> filtrar(@Param("pesquisa") String pesquisa);
+	
 }

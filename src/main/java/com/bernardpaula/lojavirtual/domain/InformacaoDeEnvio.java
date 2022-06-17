@@ -24,13 +24,13 @@ public class InformacaoDeEnvio implements Serializable{
 	
 	@NotEmpty(message= "Campo Obrigatório")
 	@Length(min=1, max = 50, message = "O tamanho deve estar entre 1 e 50 caracteres")
-	@Column(name="tipo_envio", unique=true)
+	@Column(name="tipo_envio")
 	private String tipoEnvio;
 	
-	@Column(name= "custo_envio", unique=true)
+	@Column(name= "custo_envio")
 	private Integer custoEnvio;
 	
-	@Column(name="num_regiao_envio", unique=true)
+	@Column(name="num_regiao_envio")
 	private Integer numRegiaoEnvio;
 	
 	

@@ -12,7 +12,7 @@ import com.bernardpaula.lojavirtual.domain.Administrador;
 @Repository
 public interface AdministradorRepository extends JpaRepository<Administrador, Integer> {
 
-	@Query(value="SELECT * FROM administrador WHERE nomeAdmin LIKE %:pesquisa%", nativeQuery=true)
+	@Query(value="SELECT * FROM administrador WHERE nome_adm LIKE %:pesquisa%", nativeQuery=true)
 	List<Administrador> filtrar(@Param("pesquisa")String pesquisa);
 	
 }

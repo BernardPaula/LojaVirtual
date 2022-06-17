@@ -8,15 +8,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name="detatlhes_do_pedido")
+@Table(name="detalhes_do_pedido")
 public class DetalhesDoPedido implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -33,15 +34,18 @@ public class DetalhesDoPedido implements Serializable{
 	@Column(name="nome_produto", unique=true)
 	private String nomeProduto;
 	
-	@Column(name="quantidade", unique=true)
+	@Column(name="quantidade")
 	private Integer quantidade;
 	
-	@Column(name="custo_unidade", unique=true)
+	@Column(name="custo_unidade")
 	private float custoUnidade;
 	
-	@Column(name="subtotal", unique=true)
+	@Column(name="subtotal")
 	private float subtotal;
 	
+	@JsonIgnore
+	@OneToOne(mappedBy = "detalhesDoPedido")
+	private Pedido pedido;
 	
 	
 	public DetalhesDoPedido() {
@@ -59,6 +63,17 @@ public class DetalhesDoPedido implements Serializable{
 		this.quantidade = quantidade;
 		this.custoUnidade = custoUnidade;
 		this.subtotal = subtotal;
+		
+	}
+
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 
 

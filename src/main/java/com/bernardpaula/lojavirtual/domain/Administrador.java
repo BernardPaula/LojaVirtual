@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-@Table(name = "admnistrador")
+@Table(name = "administrador")
 public class Administrador implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -25,7 +25,7 @@ public class Administrador implements Serializable{
 	
 	@NotEmpty(message = "Campo Obrigatório!")
 	@Length(min=1, max= 80, message="O tamanho deve estar entre 1 e 80 caracteres!")
-	@Column(name= "administrador", unique = true)
+	@Column(name= "nome_adm", unique = true)
 	private String nomeAdm;
 	
 	@Email

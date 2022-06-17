@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,30 +36,33 @@ public class Pedido implements Serializable{
 	@Column(name = "nome_cliente", unique=true)
 	private String nomeCliente;
 	
-	@Column(name = "num_cliente", unique=true)
+	@Column(name = "num_cliente")
 	private Integer numCliente;
 	
 	@NotEmpty(message = "Campo Obrigatório!")
 	@Length(min=1, max= 50, message="O tamanho deve estar entre 1 e 80 caracteres!")	
-	@Column(name = "estado", unique=true)
+	@Column(name = "estado")
 	private String estado;
 	
-	@Column(name = "num_envio", unique=true)
+	@Column(name = "num_envio")
 	private Integer numEnvio;
 	
-	
+	@OneToOne
+	@JoinColumn(name="detalhes_do_pedido_id")
+	private DetalhesDoPedido detalhesDoPedido;
 	
 	
 	public Pedido() {
-		
+		    
 	}
+
 
 
 	public Pedido(Integer numPedido, Date dataCriacao,
 			@NotEmpty(message = "Campo Obrigatório!") @Length(min = 1, max = 80, message = "O tamanho deve estar entre 1 e 80 caracteres!") String nomeCliente,
 			Integer numCliente,
 			@NotEmpty(message = "Campo Obrigatório!") @Length(min = 1, max = 50, message = "O tamanho deve estar entre 1 e 80 caracteres!") String estado,
-			Integer numEnvio) {
+			Integer numEnvio, DetalhesDoPedido detalhesDoPedido) {
 		super();
 		this.numPedido = numPedido;
 		this.dataCriacao = dataCriacao;
@@ -65,6 +70,18 @@ public class Pedido implements Serializable{
 		this.numCliente = numCliente;
 		this.estado = estado;
 		this.numEnvio = numEnvio;
+		this.detalhesDoPedido = detalhesDoPedido;
+	}
+
+
+
+	public DetalhesDoPedido getDetalhesDoPedido() {
+		return detalhesDoPedido;
+	}
+
+
+	public void setDetalhesDoPedido(DetalhesDoPedido detalhesDoPedido) {
+		this.detalhesDoPedido = detalhesDoPedido;
 	}
 
 

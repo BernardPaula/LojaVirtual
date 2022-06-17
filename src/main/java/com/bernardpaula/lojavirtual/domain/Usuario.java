@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
 	
 	@NotEmpty(message = "Campo Obrigatório!")
 	@Length(min=1, max= 80, message="O tamanho deve estar entre 1 e 80 caracteres!")
-	@Column(name = "estad_log", unique=true)
+	@Column(name = "estad_log")
 	private String estadLog;
 	
 	@Temporal(TemporalType.TIMESTAMP)

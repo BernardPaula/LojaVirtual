@@ -8,4 +8,6 @@ import com.bernardpaula.lojavirtual.domain.CarrinhoDeCompras;
 @Repository
 public interface CarrinhoDeComprasRepository extends JpaRepository<CarrinhoDeCompras, Integer>{
 
+
+	
 }

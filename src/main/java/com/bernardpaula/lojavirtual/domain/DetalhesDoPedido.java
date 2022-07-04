@@ -43,7 +43,7 @@ public class DetalhesDoPedido implements Serializable{
 	@Column(name="subtotal")
 	private float subtotal;
 	
-	@JsonIgnore
+	@JsonIgnore    
 	@OneToOne(mappedBy = "detalhesDoPedido")
 	private Pedido pedido;
 	

@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-	
+
 	private final ResponseMessage m201 = simpleMessage(201, "Recurso criado");
 	private final ResponseMessage m204put = simpleMessage(204, "Atualização ok");
 	private final ResponseMessage m204del = simpleMessage(204, "Deleção ok");

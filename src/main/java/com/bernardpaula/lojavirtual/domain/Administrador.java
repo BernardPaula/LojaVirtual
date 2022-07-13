@@ -14,6 +14,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "administrador")
 public class Administrador implements Serializable{
@@ -39,7 +41,7 @@ public class Administrador implements Serializable{
 
 	public Administrador(Integer numAdm,
 			@NotEmpty(message = "Campo Obrigatório!") @Length(min = 1, max = 80, message = "O tamanho deve estar entre 1 e 80 caracteres!") String nomeAdm,
-			@Email String email) {
+			@Email String email, String senha) {
 		super();
 		this.numAdm = numAdm;
 		this.nomeAdm = nomeAdm;

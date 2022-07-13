@@ -16,6 +16,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {
@@ -25,6 +27,7 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer numUsuar;
 	
+	@JsonIgnore
 	@NotEmpty(message = "Campo Obrigatório!")
 	@Length(min=1, max= 15, message="O tamanho deve estar entre 1 e 15 caracteres!")
 	@Column(name="senha", unique=true)

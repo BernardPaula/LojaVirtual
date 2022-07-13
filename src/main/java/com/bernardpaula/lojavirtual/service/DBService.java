@@ -3,6 +3,7 @@ package com.bernardpaula.lojavirtual.service;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bernardpaula.lojavirtual.domain.Administrador;
@@ -23,6 +24,8 @@ import com.bernardpaula.lojavirtual.repository.UsuarioRepository;
 @Service
 public class DBService {
 
+	@Autowired
+	private BCryptPasswordEncoder pe;
 	
 	@Autowired
 	private AdministradorRepository admRepo;
@@ -47,11 +50,11 @@ public class DBService {
 	
 	
 	public void instantiageDatabase() {
-		Administrador adm1 = new Administrador(null, "João", "joao@gmail.com");
-		Administrador adm2 = new Administrador(null, "Maria", "maria@gmail.com");
-		Administrador adm3 = new Administrador(null, "Leticia", "leticia@gmail.com");
-		Administrador adm4 = new Administrador(null, "Pedro", "pedro@gmail.com");
-		Administrador adm5 = new Administrador(null, "Laura", "laura@gmail.com");
+		Administrador adm1 = new Administrador(null, "João", "joao@gmail.com", pe.encode("123"));
+		Administrador adm2 = new Administrador(null, "Maria", "maria@gmail.com", pe.encode("123"));
+		Administrador adm3 = new Administrador(null, "Leticia", "leticia@gmail.com", pe.encode("123"));
+		Administrador adm4 = new Administrador(null, "Pedro", "pedro@gmail.com", pe.encode("123"));
+		Administrador adm5 = new Administrador(null, "Laura", "laura@gmail.com", pe.encode("123"));
 		
 		admRepo.saveAll(Arrays.asList(adm1, adm2, adm3, adm4, adm5));
 		
@@ -101,11 +104,11 @@ public class DBService {
 		
 		
 		
-		Usuario usu1 = new Usuario(null, "12456", "aaa", null);
-		Usuario usu2 = new Usuario(null, "546666", "bbb", null);
-		Usuario usu3 = new Usuario(null, "aas6f6", "ccc", null);
-		Usuario usu4 = new Usuario(null, "16sda45", "ddd", null);
-		Usuario usu5 = new Usuario(null, "ad65hj5", "eee", null);
+		Usuario usu1 = new Usuario(null, pe.encode("123"), "aaa", null);
+		Usuario usu2 = new Usuario(null, pe.encode("123"), "bbb", null);
+		Usuario usu3 = new Usuario(null, pe.encode("123"), "ccc", null);
+		Usuario usu4 = new Usuario(null, pe.encode("123"), "ddd", null);
+		Usuario usu5 = new Usuario(null, pe.encode("123"), "eee", null);
 		
 		usuRepo.saveAll(Arrays.asList(usu1, usu2, usu3, usu4, usu5));
 		

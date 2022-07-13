@@ -13,6 +13,7 @@ import com.bernardpaula.lojavirtual.domain.DetalhesDoPedido;
 import com.bernardpaula.lojavirtual.domain.InformacaoDeEnvio;
 import com.bernardpaula.lojavirtual.domain.Pedido;
 import com.bernardpaula.lojavirtual.domain.Usuario;
+import com.bernardpaula.lojavirtual.domain.enums.Perfil;
 import com.bernardpaula.lojavirtual.repository.AdministradorRepository;
 import com.bernardpaula.lojavirtual.repository.CarrinhoDeComprasRepository;
 import com.bernardpaula.lojavirtual.repository.ClienteRepository;
@@ -110,7 +111,10 @@ public class DBService {
 		Usuario usu4 = new Usuario(null, pe.encode("123"), "ddd", null);
 		Usuario usu5 = new Usuario(null, pe.encode("123"), "eee", null);
 		
-		usuRepo.saveAll(Arrays.asList(usu1, usu2, usu3, usu4, usu5));
+		Usuario usu6 = new Usuario(null, pe.encode("123"), "eee", null);
+		usu6.addPerfil(Perfil.ADMIN);
+		
+		usuRepo.saveAll(Arrays.asList(usu1, usu2, usu3, usu4, usu5, usu6));
 		
 	}
 }
